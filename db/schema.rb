@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_040839) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "name"
-    t.string "username"
+    t.string "username", null: false
     t.string "avatar"
     t.string "email"
     t.json "tokens"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_040839) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "posts", "users"

@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :posts, dependent: :destroy
+
+  validates :username, presence: true, uniqueness: true
 end
