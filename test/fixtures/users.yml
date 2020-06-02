@@ -1,0 +1,6 @@
+batman:
+  name: Bruce Wayne
+  email: batman@gmail.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  updated_at: <%= 6.months.ago %>
+  created_at: <%= 6.months.ago %>
