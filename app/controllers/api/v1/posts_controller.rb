@@ -3,9 +3,9 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user).order(created_at: :desc)
 
-    render json: @posts
+    render json: @posts, include: :user
   end
 
   # GET /posts/1
@@ -18,7 +18,7 @@ class Api::V1::PostsController < Api::V1::BaseController
     @post = current_api_user.posts.new(post_params)
 
     if @post.save
-      render json: @post, status: :created
+      render json: @post, include: :user, status: :created
     else
       render json: @post.errors, status: :unprocessable_entity
     end
