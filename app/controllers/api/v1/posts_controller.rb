@@ -10,7 +10,7 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   # GET /posts/1
   def show
-    render json: @post
+    render json: @post, include: :user
   end
 
   # POST /posts
