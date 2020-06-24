@@ -42,6 +42,6 @@ class Api::V1::CommentsController < Api::V1::BaseController
     end
 
     def comment_params
-      params.require(:comment).permit(:comment)
+      params.require(:comment).permit(:content)
     end
 end
